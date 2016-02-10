@@ -5,6 +5,7 @@
 	$db_name="Project"; // Database name
 	$tbl_name="users"; // Table name for users
 	$tbl_name2="tickets"// Table name for tickets
+	$tbl_name3="booking"// Table name for booking
 
 	// Connect to server and select databse.
 	mysql_connect("$host", "$username", "$password")or die("cannot connect");
@@ -12,6 +13,7 @@
 
 	$sql_firstname="SELECT first_name FROM $tbl_name JOIN $tbl_name2 ON $tbl_name.user_id = $tbl_name2.user_id WHERE user_id = ";
 	$sql_lastname="SELECT last_name FROM $tbl_name JOIN $tbl_name2 ON $tbl_name.user_id = $tbl_name2.user_id WHERE user_id = ";
+	$sql_attending="UPDATE $tbl_name3 SET attending= true WHERE user_id = ";//update attending list
 	
 	$firstname = mysql_query($sql_firstname);
 	$lastname = mysql_query($sql_lastname);
