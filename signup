@@ -2,7 +2,7 @@
  <head>
  </head>
 	<body>
-	<form id='Sign up' action='sign_up.php' method='post'
+	<form id='Sign up' action='signup.php' method='post'
     accept-charset='UTF-8'>
 		<fieldset>
 			<legend>Sign Up</legend>
@@ -44,16 +44,22 @@
 			</div>
 		</fieldset>
 	</form>
-			<?php
+</body>
+</html>
+
+<?php
 		$host="localhost"; // Host name
-		$username=""; // Mysql username
-		$password=""; // Mysql password
+		$username="caoimhe"; // Mysql username
+		$password="projectpass1"; // Mysql password
 		$db_name="Project"; // Database name
 		$tbl_name="users"; // Table name
 
 		// Connect to server and select databse.
-		mysql_connect("$host", "$username", "$password")or die("cannot connect");
-		mysql_select_db("$db_name")or die("cannot select DB");
+		$link = mysqli_connect("$host", "$username", "$password");
+		if ($link->connect_error) {
+			die("Connection failed: " . $link->connect_error);
+		} 
+		mysqli_select_db($link,$db_name )or die("cannot select DB");
 
 		// username and password sent from form
 		$myfirstname=$_POST['first_name'];
@@ -65,10 +71,10 @@
 		$mycity=$_POST['city'];
 		$mypassword=$_POST['password'];
 
-		$sql="INSERT INTO users
-			  VALUES('userid', $myfirstname, $mylastname, $myemail,$mypassword, $myphonenumber, $myaddressone, $myaddresstwo, $mycity);";
-		mysql_query($sql);
+		$sql="INSERT INTO users(first_name, last_name, email, password, phone_number, address_one, address_two, city)
+			  VALUES( $myfirstname, $mylastname, $myemail,$mypassword, $myphonenumber, $myaddressone, $myaddresstwo, $mycity);";
+		mysqli_query($link , $sql, MYSQLI_USE_RESULT);
+		mysqli_close($link);
+		echo'you signed up';
 
 ?>
-	</body>
-</html>
