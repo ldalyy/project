@@ -1,0 +1,35 @@
+<?php
+	$host="localhost"; // Host name
+	$username=""; // Mysql username
+	$password=""; // Mysql password
+	$db_name="Project"; // Database name
+	$tbl_name="users"; // Table name for users
+	$tbl_name2="tickets"// Table name for tickets
+
+	// Connect to server and select databse.
+	mysql_connect("$host", "$username", "$password")or die("cannot connect");
+	mysql_select_db("$db_name")or die("cannot select DB");
+
+	$sql_firstname="SELECT first_name FROM $tbl_name JOIN $tbl_name2 ON $tbl_name.user_id = $tbl_name2.user_id WHERE user_id = ";
+	$sql_lastname="SELECT last_name FROM $tbl_name JOIN $tbl_name2 ON $tbl_name.user_id = $tbl_name2.user_id WHERE user_id = ";
+	
+	$firstname = mysql_query($sql_firstname);
+	$lastname = mysql_query($sql_lastname);
+	
+	$my_img = imagecreate( 425, 250 );
+	$background = imagecolorallocate( $my_img, 200, 255, 255 );
+	$text_colour = imagecolorallocate( $my_img, 0, 0, 0 );
+	$line_colour = imagecolorallocate( $my_img, 128, 255, 0 );
+	imagestring( $my_img, 50, 30, 25, "Name Badge ", $text_colour );
+	imagestring( $my_img, 5, 30, 90, $firstname, $text_colour );
+	imagestring( $my_img, 5, 200, 90, $lastname, $text_colour );
+	imagesetthickness ( $my_img, 5 );
+	imageline( $my_img, 30, 45, 300, 45, $line_colour );
+
+	header( "Content-type: image/png" );
+	imagepng( $my_img );
+	imagecolordeallocate( $line_color );
+	imagecolordeallocate( $text_color );
+	imagecolordeallocate( $background );
+	imagedestroy( $my_img );
+?>
