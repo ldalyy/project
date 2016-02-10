@@ -1,0 +1,74 @@
+<html>
+ <head>
+ </head>
+	<body>
+	<form id='Sign up' action='sign_up.php' method='post'
+    accept-charset='UTF-8'>
+		<fieldset>
+			<legend>Sign Up</legend>
+			<input type='hidden' name='submitted' id='submitted' value='1'/>
+			<div>
+				<label for='first_name' >Your First Name: </label>
+				<input type='text' name='first_name' id='first_name' maxlength="50" />
+			</div>
+			<div>
+				<label for='last_name' >Your Last Name:</label>
+				<input type='text' name='last_name' id='last_name' maxlength="50" />
+			</div>
+			<div>
+				<label for='email' >Email Address:</label>
+				<input type='text' name='email' id='email' maxlength="50" />
+			</div>
+			<div>
+				<label for='phone_number' >Your Phone Number:</label>
+				<input type='text' name='phone_number' id='phone_number' maxlength="50" />
+			</div>
+			<div>
+				<label for='address_one' >Your Address Line One:</label>
+				<input type='text' name='address_one' id='address_one' maxlength="50" />
+			</div>
+			<div>
+				<label for='address_two' >Your Address Line Two:</label>
+				<input type='text' name='address_two' id='address_two' maxlength="50" />
+			</div>
+			<div>
+				<label for='city' >City:</label>
+				<input type='text' name='city' id='city' maxlength="50" />
+			</div>
+			<div>	
+				<label for='password' >Password:</label>
+				<input type='password' name='password' id='password' maxlength="50" />
+			</div>
+			<div>
+				<input type='submit' name='Submit' value='Submit' />
+			</div>
+		</fieldset>
+	</form>
+			<?php
+		$host="localhost"; // Host name
+		$username=""; // Mysql username
+		$password=""; // Mysql password
+		$db_name="Project"; // Database name
+		$tbl_name="users"; // Table name
+
+		// Connect to server and select databse.
+		mysql_connect("$host", "$username", "$password")or die("cannot connect");
+		mysql_select_db("$db_name")or die("cannot select DB");
+
+		// username and password sent from form
+		$myfirstname=$_POST['first_name'];
+		$mylastname=$_POST['last_name'];
+		$myemail=$_POST['email'];
+		$myphonenumber=$_POST['phone_number'];
+		$myaddressone=$_POST['address_one'];
+		$myaddresstwo=$_POST['address_two'];
+		$mycity=$_POST['city'];
+		$mypassword=$_POST['password'];
+
+		$sql="INSERT INTO users
+			  VALUES('userid', $myfirstname, $mylastname, $myemail,$mypassword, $myphonenumber, $myaddressone, $myaddresstwo, $mycity);";
+		mysql_query($sql);
+
+?>
+	</body>
+</html>
