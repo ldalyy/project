@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body>
+	<div>
+		<?php
+			$url='http://www.trivago.ie/?iSemThemeId=4854&iPathId=31465&sem_keyword=hotel%20ireland&sem_creativeid=78364608868&sem_matchtype=e&sem_network=g&sem_device=c&sem_placement=&sem_target=&sem_adposition=1t1&sem_param1=&sem_param2=&sem_campaignid=150852508&sem_adgroupid=7746549028&sem_targetid=kwd-108745436&sem_location=1007835&cip=353125000901';
+			$output =file_get_contents($url);
+			echo $output;
+		?>
+	</div>
+	<div>
+		<?php
+			$url1='http://www.irishrail.ie/';
+			$output1 =file_get_contents($url1);
+			echo $output1;
+		?>
+	</div>
+</body>
+</html>
