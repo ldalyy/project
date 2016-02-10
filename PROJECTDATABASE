@@ -1,0 +1,82 @@
+CREATE TABLE users(
+	user_id INT NOT NULL AUTO_INCREMENT,
+	first_name VARCHAR(255),
+	last_name VARCHAR(255),
+	email VARCHAR(255),
+	password VARCHAR(255),
+	phone_number INT,
+	address_one VARCHAR(255),
+	address_two VARCHAR(255),
+	city VARCHAR(255),
+	
+	PRIMARY KEY(user_id)
+);
+
+CREATE TABLE events(
+	event_name VARCHAR(255),
+	event_date DATE,
+	location VARCHAR(255),
+	event_id INT,
+	PRIMARY KEY(event_id)
+);
+
+CREATE TABLE recordings(
+	video_file_name VARCHAR(255),
+	PRIMARY KEY(video_file_name)
+);
+
+CREATE TABLE booking(
+	booking_id INT,
+	user_id INT,
+	price DECIMAL(18,2),
+	date DATE,
+	PRIMARY KEY(booking_id),
+	FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE tickets(
+	ticket_id INT,
+	event_location VARCHAR(255),
+	event_name VARCHAR(255),
+	price DECIMAL(18,2),
+	booking_id INT,
+	event_date DATE,
+	attending BOOLEAN,
+	PRIMARY KEY(ticket_id),
+	FOREIGN KEY (booking_id) REFERENCES booking(booking_id)
+);
+
+CREATE TABLE travel(
+	travel_type VARCHAR(255),
+	travel_price DECIMAL(18,2),
+	departure_time DATETIME,
+	arrival_time DATETIME,
+	event_location VARCHAR(255),
+	travel_from VARCHAR(255),
+	event_name VARCHAR(255),
+	event_date DATE,
+	travel_id INT,
+	user_id INT,
+	PRIMARY KEY(travel_id),
+	FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE accomodation(
+	accomodation_type VARCHAR(255),
+	accomodation_address VARCHAR(255),
+	price_pppn DECIMAL(18,2),
+	name_accomodation VARCHAR(255),
+	accomodation_id INT,
+	event_name VARCHAR(255),
+	date_of_stay DATE,
+	user_id INT,
+	PRIMARY KEY(accomodation_id),
+	FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE competitions(
+	competition_name VARCHAR(255),
+	winner_id INT,
+	PRIMARY KEY(competition_name),
+	FOREIGN KEY (winner_id) REFERENCES users(user_id)
+);
