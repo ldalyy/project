@@ -1,0 +1,42 @@
+<?php
+	$host="localhost"; // Host name
+	$username=""; // Mysql username
+	$password=""; // Mysql password
+	$db_name="Project"; // Database name
+	$tbl_name="tickets"; // Table name
+
+	// Connect to server and select databse.
+	mysql_connect("$host", "$username", "$password")or die("cannot connect");
+	mysql_select_db("$db_name")or die("cannot select DB");
+
+	$sql_eventname="SELECT * FROM $tbl_name WHERE";
+	$sql_ticketid="SELECT * FROM $tbl_name WHERE";
+	$sql_eventlocation="SELECT * FROM $tbl_name WHERE";
+	$sql_date="SELECT * FROM $tbl_name WHERE";
+	$sql_price="SELECT * FROM $tbl_name WHERE";
+		
+	$eventname = mysql_query($sql_eventname);
+	$ticketid = mysql_query($sql_ticketid);
+	$eventlocation = mysql_query($sql_eventlocation);
+	$eventdate = mysql_query($sql_date);
+	$price = mysql_query($sql_price);		
+
+	$my_img = imagecreate( 425, 250 );
+	$background = imagecolorallocate( $my_img, 255, 255, 255 );
+	$text_colour = imagecolorallocate( $my_img, 0, 0, 0 );
+	$line_colour = imagecolorallocate( $my_img, 128, 255, 0 );
+	imagestring( $my_img, 4, 30, 25, "event name: ".$eventname, $text_colour );
+	imagestring( $my_img, 20, 250, 25, "serial number: ".$ticketid, $text_colour );
+	imagestring( $my_img, 30, 30, 80, "location: ".$eventlocation, $text_colour );
+	imagestring( $my_img, 50, 30, 160, "date: ".$eventdate, $text_colour );
+	imagestring( $my_img, 30, 30, 180, "price: ".$price, $text_colour );
+	imagesetthickness ( $my_img, 5 );
+	imageline( $my_img, 30, 45, 300, 45, $line_colour );
+
+	header( "Content-type: image/png" );
+	imagepng( $my_img );
+	imagecolordeallocate( $line_color );
+	imagecolordeallocate( $text_color );
+	imagecolordeallocate( $background );
+	imagedestroy( $my_img );
+?> 
