@@ -1,0 +1,14 @@
+<script type="text/javascript">
+  window.onload = function()
+        {
+		
+			var els = document.getElementsByTagName("link");
+				for (var i = 0, l = els.length; i < l; i++) {
+					var el = els[i];
+						if (el.href === '/static/packed-c4447a94ea.css') {
+							document.getElementById('/static/packed-c4447a94ea.css').disabled=true;          
+						}
+				}
+		}	
+		  
+</script>
