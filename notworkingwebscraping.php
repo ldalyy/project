@@ -131,7 +131,7 @@
 
 
      $scraped_page = curl("http://getthere.ie/cork-dublin/16-Feb");    // Downloading IMDB home page to variable $scraped_page
-    $scraped_data = scrape_between($scraped_page, "<div class=\"result-list\" id=\"result-list-outer\">","<p style=\"margin-bottom: 0;\">");   // Scraping downloaded dara in $scraped_page for content between <title> and </title> tags
+    $scraped_data = scrape_between($scraped_page, "<div class=\"expanded tbody grouping a\">","<p style=\"margin-bottom: 0;\">");   // Scraping downloaded dara in $scraped_page for content between <title> and </title> tags
 
     echo $scraped_data; // Echoing $scraped data, should show "The Internet Movie Database (IMDb)"
 ?>
