@@ -3,9 +3,11 @@
 	$username="cmw2"; // Mysql username
 	$password="iepuidee"; // Mysql password
 	$db_name="cmw2project"; // Database name
-	$tbl_name="users"; // Table name for users
-
-	// Connect to server and select databse.
+	$tbl_name ="users"; //table name for users
+	$tbl_name1 ="tickets"; //table name for tickets
+	
+	
+	// Connect to server and select database.
 		$link = mysqli_connect("$host", "$username", "$password");
 		if ($link->connect_error) {
 			die("Connection failed: " . $link->connect_error);
@@ -14,10 +16,12 @@
 		
 	$sql_firstname="SELECT first_name FROM $tbl_name WHERE user_id = 1";
 	$sql_lastname="SELECT last_name FROM $tbl_name  WHERE user_id = 1";
-
+	$sql_attending ="UPDATE $tbl_name1 SET attending = '1' WHERE ticket_id = 0";
 	
 	$firstname_attribute = "first_name";
 	$lastname_attribute = "last_name";
+	
+	mysqli_query($link, $sql_attending);
 	
 	function sqltoString($link1, $sqlstatement, $attribute) {    
 		if ($object = mysqli_query($link1, $sqlstatement)) {
