@@ -5,11 +5,10 @@
     <title>Payment Form</title>
     
     <link rel="stylesheet" type="text/css" href="style.css">
+    <img src="logo.gif" alt="logo" />
   </head>
-
   <body>
-
-    <html lang="en">
+     <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,16 +40,15 @@
               <ul class="nav navbar-nav" id="navigation">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="#service">Spring</a></li>
-                <li><a href="#price">Summer</a></li>
-                <li><a href="#clients">Autumn</a></li>
-                <li><a href="#facts">Winter</a></li>
+                <li><a href="spring.html">Spring</a></li>
+                <li><a href="summer.html">Summer</a></li>
+                <li><a href="autumn.html">Autumn</a></li>
+                <li><a href="winter.html">Winter</a></li>
                 <li><a href="contact.html">Contact</a></li>
               </ul>
           </div>
         </div>
 </nav>
-    	
 <form action="form.php" method="get">
     <fieldset>
         <legend><span>Billing Information</span></legend>
@@ -74,8 +72,12 @@
          <input id="surname" type="text" class="field"/>
          </p>
          <p>
-         <label class="field" for="address">Address:</label>
-         <input id="address" type="text" class="field" />
+         <label class="field" for="address1">Address:</label>
+         <input id="address1" type="text" class="field" />
+         </p>
+         <p>
+         <label class="field" for="address2">Address (line 2):</label>
+         <input id="address2" type="text" class="field" />
          </p>
          <p>
          <label class="field" for="town">Town:</label>
@@ -410,13 +412,23 @@
     </p>
                   
     </fieldset>
-</form>
-
-    	<!-- CREDIT CARD FORM -->
+    <fieldset>
+        <legend><span>Payment Method</span></legend>
+    <p>
+    <input type="radio" name="method" value="paypal" checked> PayPal<br><img src="paypal.png" alt="Paypal Icon" />
+    </p>
+    <p>
+    <input type="radio" name="method" value="card" checked> Credit Card<br><img src="creditcards.png" alt="Credit Cards Icon" />
+    </p>
+    </fieldset>
+    <fieldset>
+         <legend><span>Card Details</span></legend>
+          <!-- CREDIT CARD FORM -->
+           
             <div class="panel panel-default credit-card-box customwidth center-block">
-                <div class="panel-heading display-table" >
-                    <div class="row display-tr" >
-                        <h3 class="panel-title display-td" >Payment Details</h3>
+             <div class="panel-heading display-table" >
+            <div class="row display-tr" >
+                       <h3 class="panel-title display-td" >Payment Details</h3>
                         <div class="display-td" >                            
                             <img class="img-responsive pull-right" src="http://i.imgur.com/gIMFDbp.png">
                             <!-- <img class="img-responsive pull-right" src="http://i.imgur.com/WluzPvZ.png">
@@ -486,47 +498,14 @@
                                 <p class="payment-errors"></p>
                             </div>
                         </div>
+                        </fieldset>
                     </form>
                 </div>
             </div>            
             <!-- CREDIT CARD FORM END-->
     
-     <form name="_xclick" action="https://www.paypal.com/ie/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="volunteereireann@gmail.com">
-<input type="hidden" name="currency_code" value="EUR">
-<input type="hidden" name="item_name" value="Event">
-<input type="hidden" name="amount" value="10.00">
-<table>
-  <tr>
-    <td>
-    <input type="hidden" name="on0" value="quantity">Quantity</td>
-    <td>
-    <select name="os0">
-    <option value="Select an Amount">Select an Amount
-    <option value="0">0
-    <option value="1">1
-    <option value="2">2
-    <option value="3">3
-    <option value="4">4
-    </select></td>
-    <td>
-    <input type="hidden" name="on1" value="Event">Event</td>
-    <td>
-    <input type="text" name="os1" maxlength="200"></td>
-    <td>
-    <input type="image" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!"></td>
-  </tr>
-</table>
-</form>
-     
-</div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </body>
-</html>
-    
-        <script src="js/index.js"></script>
-</body>
 </html>
